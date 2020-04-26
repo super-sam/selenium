@@ -1,0 +1,17 @@
+### MAC ###
+.DS_STORE
+/**/.DS_STORE
+
+### Python ###
+*.py[cod]
+Python/lib/
+Python-unittest/lib/
+
+### JavaScript ###
+node_modules/
+/**/node_modules
+/**/package-lock.json
+
+### Java ###
+/**/.idea
+/**/*.class
