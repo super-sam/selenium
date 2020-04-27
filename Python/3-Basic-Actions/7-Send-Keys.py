@@ -9,6 +9,9 @@ url = "https://www.google.com"
 
 try:
     driver.get(url)
+    '''
+    Go go google.com and search for "Selenium Webdriver"
+    '''
     search_field = driver.find_element('name', 'q')
     search_field.send_keys('Selenium Webdriver')
     pdb.set_trace()  # Enter 'c' to continue
