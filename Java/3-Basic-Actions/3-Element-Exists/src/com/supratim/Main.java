@@ -9,15 +9,15 @@ import org.openqa.selenium.By;
 import java.lang.reflect.Method;
 
 public class Main {
-
+    public static WebDriver driver;
     public static void main(String[] args) {
-	    WebDriver driver = new ChromeDriver();
+	    driver = new ChromeDriver();
 	    String url = "https://www.w3schools.com/";
 	    driver.get(url);
 
 	    try{
             String locator_fn = "id";
-            String locator_text = "mySidediv";
+            String locator_text = "mySidenav";
 	        if (assert_element_exist(locator_fn, locator_text)){
 	            System.out.println(String.format("Found %s of %s ", locator_fn, locator_text));
             }
@@ -37,27 +37,17 @@ public class Main {
     }
 
     private static boolean element_exist(String locator_fn, String locator_text){
-        boolean hasMethod = false;
-        Method[] methods = By.class.getMethods();
-
-        for (Method m : methods) {
-            if (locator_fn == m.getName()){
-                hasMethod = true;
-                break;
-            }
-        }
-
         try{
-            if(hasMethod){
-                Method myMethod = By.class.getDeclaredMethod(locator_fn, String.class);
-                WebElement my_element = (WebElement) myMethod.invoke(null, locator_text);
+            Method myMethod = By.class.getDeclaredMethod(locator_fn, String.class);
+            WebElement my_element = driver.findElement((By) myMethod.invoke(null, locator_text));
 
-            }
         } catch (Exception e){
-            hasMethod = false;
             System.out.println(e.getMessage());
+            return false;
         }
-        return hasMethod;
+        return true;
+
+
     }
 
     private static boolean assert_element_exist(String locator_fn, String locator_text){
