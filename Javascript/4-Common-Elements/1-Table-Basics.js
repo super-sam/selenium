@@ -59,17 +59,19 @@ const assertColInRowContains = async (my_table, text_to_check, row_num, col_num)
     const config = {
         text_to_search : "UK",
         rows: 7,
+        id_to_search: "customers",
         row_to_search: 4,
-        col_to_search: 2
+        col_to_search: 2,
+        url: "http://www.w3schools.com/html/html_tables.asp"
     }
 
     try {
-        const url =  "http://www.w3schools.com/html/html_tables.asp";
+        const { url, rows, id_to_search, text_to_search, row_to_search, col_to_search } = config;
 
         await driver.get(url);
-        const table = await driver.findElement(By.id('customers'));
+        const table = await driver.findElement(By.id(id_to_search));
         
-        const { rows, text_to_search, row_to_search, col_to_search} = config;
+        
 
         if(await assertNumberOfRowsInTable(table, rows)){
             console.info(`Actual Row is equal to ${rows}`)
