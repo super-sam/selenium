@@ -1,5 +1,6 @@
 from selenium import webdriver
 
+
 def get_number_of_table_rows(my_table):
 
     all_rows = my_table.find_elements_by_tag_name('tr')
