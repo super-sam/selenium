@@ -32,6 +32,7 @@ if __name__ == '__main__':
     import pdb
 
     try:
+        # NOTE: Run the sample.html in localhost before running this script
         url = "http://127.0.0.1:5500/Python/4-Common-Elements/sample.html"
         driver.get(url)
         
